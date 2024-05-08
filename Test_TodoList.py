@@ -29,9 +29,9 @@ class Test_TodoList(unittest.TestCase):
         toDoList = ToDoList()
         toDoList.addTask(task)
         
-        toDoList.editTask(0, "Do Homework")
+        toDoList.editTask(1, "Do Homework")
         self.assertEqual(task.description, "Do Homework")
-        toDoList.editTask(1, "Clean")
+        toDoList.editTask(2, "Clean")
         self.assertNotEqual(task.description, "Clean") #should stay as "Do Homework"
     
     #integration, unit test 
