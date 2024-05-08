@@ -2,7 +2,7 @@
 #Author: Emanuelle Pelayo
 #Date: May 7th, 2024
 
-#example comment 
+
 from Task import Task
 from TodoList import ToDoList
 
@@ -38,7 +38,7 @@ def main():
             toDoList.printToDoList()
             toDoList.printToDoList()
             userChoice = int(input("Enter # of task you wish to delete: "))
-            toDoList.deleteTask()
+            toDoList.deleteTask(userChoice)
             print ("Deleted.")
             
         elif userInput == 4: #print all tasks
