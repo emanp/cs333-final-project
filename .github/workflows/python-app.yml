@@ -50,10 +50,18 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        
+    - name: Tag Docker image  
+      run: |
+        docker tag python-image $DOCKER_HUB_USERNAME/python-image:latest
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker tag python-image ${{ secrets.DOCKER_HUB_USERNAME }}/python-image:latest
-        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/python-image:latest
+        docker push $DOCKER_HUB_USERNAME/python-image:latest
 
-      
+    - name: Publish Docker image to GitHub Packages
+      run: |
+        echo "$DOCKER_HUB_PASSWORD" | docker login docker.pkg.github.com -u "$DOCKER_HUB_USERNAME" --password-stdin
+        docker pull $DOCKER_HUB_USERNAME/python-image:latest
+        docker tag $DOCKER_HUB_USERNAME/python-image:latest docker.pkg.github.com/${{ github.repository }}/${{ github.workflow }}:latest
+        docker push docker.pkg.github.com/${{ github.repository }}/${{ github.workflow }}:latest
