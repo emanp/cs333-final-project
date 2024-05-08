@@ -51,12 +51,11 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
         
-    - name: Tag Docker image  
-      run: |
         docker tag python-image $DOCKER_HUB_USERNAME/python-image:latest
 
     - name: Push Docker image to Docker Hub
       run: |
+        docker tag python-image ${{ secrets.DOCKER_HUB_USERNAME }}/python-image:latest
         docker push $DOCKER_HUB_USERNAME/python-image:latest
 
     - name: Publish Docker image to GitHub Packages
