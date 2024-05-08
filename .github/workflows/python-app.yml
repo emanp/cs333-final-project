@@ -58,7 +58,7 @@ jobs:
         
     - name: Publish Docker image to GitHub Packages
       run: |
-        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login docker.pkg.github.com -u "${{ secrets.DOCKER_HUB_PASSWORD }}" --password-stdin
+        echo "${{ secrets.DOCKER_HUB_USERNAME }}" | docker login docker.pkg.github.com -u "${{ secrets.DOCKER_HUB_PASSWORD }}" --password-stdin
         docker pull "${{ secrets.DOCKER_HUB_USERNAME }}/python-image:latest"
 
         docker tag "${{ secrets.DOCKER_HUB_USERNAME }}/python-image:latest" "docker.pkg.github.com/${{ github.repository }}/${{ github.workflow }}/python-image:latest"
