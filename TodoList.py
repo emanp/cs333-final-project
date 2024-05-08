@@ -23,8 +23,9 @@ class ToDoList:
             self.tasks[taskIndex - 1].description = newDescription 
         
         
-    def deleteTask(self, task_index): #DONE
-        del self.tasks[task_index - 1] 
+    def deleteTask(self, taskIndex): #DONE
+        if taskIndex <= len(self.tasks) and taskIndex > 0:
+            del self.tasks[taskIndex - 1] 
         
         
     def markTaskAsDone(self, taskIndex): #DONE
