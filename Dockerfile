@@ -4,11 +4,15 @@ ADD main.py /app/
 
 ADD Task.py /app/
 
-ADD ToDoList.py /app/
+ADD TodoList.py /app/
+
+ADD Test_Task.py /app/
+
+ADD Test_TodoList.py /app/
+
 
 WORKDIR /app
 
-#RUN pip install unittest install dependencies
 
 CMD [ "python", "main.py" ]
 
