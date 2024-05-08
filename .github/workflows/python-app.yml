@@ -36,5 +36,13 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: |
-        python -m unittest -v test_file.py
-        #include more test files here
+        python -m unittest -v Test_TodoList.py
+        python -m unittest -v Test_Task.py
+
+    - name: Build Docker image
+      run: |
+        docker build -t python-image .
+
+      #to build, use docker run -i python-image
+
+      
