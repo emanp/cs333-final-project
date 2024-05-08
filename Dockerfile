@@ -12,6 +12,8 @@ ADD Test_TodoList.py /app/
 
 
 WORKDIR /app
+RUN echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
 
 
 CMD [ "python", "main.py" ]
