@@ -50,8 +50,6 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        
-        docker tag python-image $DOCKER_HUB_USERNAME/python-image:latest
 
     - name: Push Docker image to Docker Hub
       run: |
